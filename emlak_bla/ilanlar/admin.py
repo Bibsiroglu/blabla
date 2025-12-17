@@ -5,14 +5,18 @@ from ilanlar.models.ilan import Ilan
 
 # Register your models here.
 class IlanAdmin(admin.ModelAdmin):
-    list_display = ('baslik', 'durum')
+    list_display = ('baslik', 'durum', 'pasif_nedeni')
 
     fieldsets = [
         ('Temel Bilgiler',
          {
              'fields': (
-                 'baslik', 'durum'
+                 'baslik', 'durum', 'pasif_nedeni'
              )
          })
     ]
+
+    class Media:
+        js = ('admin/js/ilan_admin.js',)
+
 admin.site.register(Ilan, IlanAdmin)

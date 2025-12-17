@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from .durum import DURUM_SECENEKLERI
+from .durum import DURUM_SECENEKLERI, PASIF_NEDENLERI
 
 class Ilan(models.Model):
     baslik = models.CharField(max_length=150, verbose_name='İlan Başlığı')
@@ -9,6 +9,12 @@ class Ilan(models.Model):
         choices=DURUM_SECENEKLERI, 
         default='Aktif', 
         verbose_name='İlan Durumu'
+    )
+    pasif_nedeni = models.CharField(
+           max_length=20,
+           choices=PASIF_NEDENLERI,
+           default='Diger',
+           verbose_name='Pasif Nedeni'
     )
     class Meta:
             # Yönetici panelinde tekil isim (Örn: "Ilan ekle")
